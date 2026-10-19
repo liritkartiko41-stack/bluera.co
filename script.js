@@ -379,9 +379,9 @@ function startRawPhotosPreview() {
     const btn2 = document.getElementById("downloadPhoto2");
     const btn3 = document.getElementById("downloadPhoto3");
 
-    if (btn1) btn1.onclick = () => downloadSinglePhoto(photos[0] || photos[0], "SGARA_Foto_1.png");
-    if (btn2) btn2.onclick = () => downloadSinglePhoto(photos[1] || photos[0], "SGARA_Foto_2.png");
-    if (btn3) btn3.onclick = () => downloadSinglePhoto(photos[2] || photos[0], "SGARA_Foto_3.png");
+    if (btn1) btn1.onclick = () => downloadSinglePhoto(photos[0] || photos[0], "strip1.png");
+    if (btn2) btn2.onclick = () => downloadSinglePhoto(photos[1] || photos[0], "strip2.png");
+    if (btn3) btn3.onclick = () => downloadSinglePhoto(photos[2] || photos[0], "strip3.png");
 }
 function downloadSinglePhoto(dataUrl, fileName) {
     if (!dataUrl) return;
@@ -390,55 +390,11 @@ function downloadSinglePhoto(dataUrl, fileName) {
     link.download = fileName;
     link.click();
 }
-// =========================================================
-// INTERAKSI GELAS KACA & 10 SURAT PESAN INSPIRASI
-// =========================================================
-
-const sgaraLetters = [
-    "Senyummu hari ini memancarkan kehangatan bagai seduhan Teh Bunga Telang hangat.",
-    "Jangan lupa istirahat! Ketenangan sejati dimulai dari pikiran yang jernih.",
-    "Setiap momen manis layak diabadikan. Terima kasih sudah tersenyum bersama BLUERA!",
-    "Bunga Telang kaya akan antioksidan, begitu pula dirimu yang penuh energi positif!",
-    "Nikmati prosesmu hari ini, hasil indah sedang mekar menunggu waktunya.",
-    "Kesehatan tubuh dan ketenangan jiwa adalah kombinasi kebahagiaan terbaik.",
-    "Warna biru alami Telang membawa ketenangan, semoga harimu penuh kedamaian.",
-    "Kamu luar biasa! Tetap jadi dirimu yang autentik dan bercahaya.",
-    "Satu tegukan kesegaran, sejuta kebaikan untuk harimu yang produktif.",
-    "Abadikan setiap kebahagiaan kecil, karena dari situlah kenangan manis tercipta.",
-    "Setiap tantangan adalah kesempatan untuk tumbuh.",
-    "Jangan ragu untuk istirahat saat kamu merasa lelah.",
-    "Keberadaanmu sangat bermakna bagi orang-orang sekitar.",
-    "Kerja kerasmu tidak akan pernah mengkhianati hasil.",
-    "Tetaplah berbuat baik, kebaikan akan kembali padamu.",
-    "Kamu lebih kuat dari apa yang kamu bayangkan.",
-    "Luangkan waktu untuk melakukan hal yang kamu sukai hari ini.",
-    "Langkah kecil hari ini menuju pencapaian besar besok.",
-    "Sebotol Telarae dan Flore crips untuk menenangkan harimu yang sibuk.",
-    "Ingat, kamu tidak sendirian. Tetap semangat ya!"
-];
-
-function openLetter(event, index) {
-    if (event) event.stopPropagation();
-    
-    const modal = document.getElementById("letterModal");
-    const title = document.getElementById("letterTitle");
-    const text = document.getElementById("letterText");
-
-    title.textContent = `Surat Spesial #${index + 1}`;
-    text.textContent = `"${sgaraLetters[index]}"`;
-    
-    modal.style.display = "flex";
-
-    // Otomatis scroll layar ke area surat agar langsung kelihatan utuh
-    modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-function openRandomLetter() {
-    const randomIndex = Math.floor(Math.random() * sgaraLetters.length);
-    openLetter(null, randomIndex);
-}
-
-function closeLetter() {
-    document.getElementById("letterModal").style.display = "none";
-}
-// --- SELESAI ---
+// Pengaturan kamera agar ringan di HP
+const constraints = {
+  video: {
+    width: { ideal: 1280 },
+    height: { ideal: 720 },
+    facingMode: "user"
+  }
+};

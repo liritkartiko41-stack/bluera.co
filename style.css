@@ -1,3 +1,21 @@
+/* Mencegah seluruh website bisa geser kiri-kanan */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative; /* Menjaga elemen absolute tetap di dalam */
+}
+
+/* Tambahan: Pastikan semua elemen tidak melampaui lebar induknya */
+* {
+  box-sizing: border-box; /* Lebar sudah termasuk padding & border */
+}
+
+/* Pastikan semua gambar tidak bisa lebih lebar dari layarnya */
+img {
+  max-width: 100%;
+  height: auto;
+}
 @import url('https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Quicksand:wght@500;600;700&display=swap');
 
 html {
@@ -292,120 +310,7 @@ button:hover, .btn-primary:hover, #snapBtn:hover, #retakeBtn:hover {
 #photobox {
     animation-delay: 0.3s;
 }
-/* --- AESTHETIC GLASS JAR & LETTER MODAL --- */
-.glass-jar {
-    width: 200px;
-    height: 250px;
-    margin: 0 auto;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
 
-.glass-jar:hover {
-    transform: scale(1.05);
-}
-
-.jar-lid {
-    width: 130px;
-    height: 24px;
-    background: #432f2e;
-    margin: 0 auto;
-    border-radius: 6px 6px 0 0;
-}
-
-.jar-body {
-    width: 180px;
-    height: 210px;
-    background: rgba(254, 239, 184, 0.35);
-    border: 4px solid rgba(67, 47, 46, 0.8);
-    border-radius: 20px 20px 45px 45px;
-    margin: 0 auto;
-    backdrop-filter: blur(4px);
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6), 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Posisi 10 Surat Acak di Dalam Gelas */
-.paper-scroll {
-    position: absolute;
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: transform 0.2s ease, filter 0.2s ease;
-    user-select: none;
-}
-
-.paper-scroll:hover {
-    transform: scale(1.4) rotate(10deg);
-    filter: drop-shadow(0 0 5px #feefb8);
-}
-
-.s1  { bottom: 10px; left: 15px; transform: rotate(-15deg); }
-.s2  { bottom: 12px; left: 50px; transform: rotate(25deg); }
-.s3  { bottom: 10px; right: 15px; transform: rotate(-30deg); }
-.s4  { bottom: 45px; left: 25px; transform: rotate(40deg); }
-.s5  { bottom: 42px; right: 25px; transform: rotate(-10deg); }
-.s6  { bottom: 40px; left: 55px; transform: rotate(15deg); }
-.s7  { bottom: 75px; left: 20px; transform: rotate(-45deg); }
-.s8  { bottom: 78px; right: 20px; transform: rotate(35deg); }
-.s9  { bottom: 75px; left: 50px; transform: rotate(-5deg); }
-.s10 { bottom: 105px; left: 45px; transform: rotate(20deg); }
-.s11 { bottom: 35px; left: 25px; transform: rotate(18deg); }
-.s12 { bottom: 75px; left: 110px; transform: rotate(-22deg); }
-.s13 { bottom: 115px; left: 45px; transform: rotate(35deg); }
-.s14 { bottom: 135px; left: 105px; transform: rotate(-10deg); }
-.s15 { bottom: 155px; left: 20px; transform: rotate(25deg); }
-.s16 { bottom: 25px; left: 125px; transform: rotate(-40deg); }
-.s17 { bottom: 95px; left: 80px; transform: rotate(15deg); }
-.s18 { bottom: 145px; left: 70px; transform: rotate(-30deg); }
-.s19 { bottom: 50px; left: 95px; transform: rotate(45deg); }
-.s20 { bottom: 120px; left: 130px; transform: rotate(-18deg); }
-/* Buat area gelas sebagai patokan posisi */
-.jar-section {
-    position: relative; 
-}
-
-/* Modal popup muncul relatif di atas gelas & scroll otomatis ke tempatnya */
-.letter-modal {
-    display: none;
-    position: absolute;
-    bottom: 180px; /* Muncul pas di atas gelas */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.letter-content {
-    background: #feefb8;
-    color: #432f2e;
-    padding: 20px 18px;
-    border-radius: 16px;
-    border: 3px solid #432f2e;
-    max-width: 300px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    animation: popupAnimation 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
-}
-
-.letter-icon { font-size: 2.5rem; margin-bottom: 5px; }
-.close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-@keyframes popupAnimation {
-    from { transform: scale(0.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
 /* Container Utama untuk 3 Kotak */
 .cards-container {
   display: flex;
@@ -467,7 +372,6 @@ button:hover, .btn-primary:hover, #snapBtn:hover, #retakeBtn:hover {
   font-size: 0.85rem;
   font-weight: bold;
 }
-
 /* Penyesuaian Tampilan untuk Layar HP / Mobile */
 @media (max-width: 900px) {
   .cards-container {
@@ -499,4 +403,72 @@ button:hover, .btn-primary:hover, #snapBtn:hover, #retakeBtn:hover {
   text-justify: inter-word; /* Memastikan jarak antar kata terbagi rapi */
   line-height: 1.6;        /* Memberi jarak antar baris agar nyaman dibaca */
   width: 100%;
+}
+/* Styling khusus untuk layar HP (lebar maksimal 768px) */
+@media (max-width: 768px) {
+  /* Beri jarak aman di pinggir layar HP */
+  body {
+    padding: 10px;
+  }
+
+  /* Buat container kartu menjadi fleksibel */
+  .cards-container {
+    flex-direction: column; /* Kartu disusun membujur ke bawah */
+    gap: 15px; /* Jarak antar kartu tidak terlalu jauh */
+  }
+
+  /* Atur lebar kartu agar pas di layar HP */
+  .product-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  /* Perkecil ukuran gambar di dalam kartu agar tidak makan tempat */
+  .product-card .card-img {
+    max-width: 80px; /* Ukuran gambar di HP dipresisi */
+    height: auto;
+  }
+
+  /* Sesuaikan ukuran font agar nyaman dibaca di HP */
+  .product-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .product-card p, 
+  .product-card li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Atur tampilan photostrip / canvas agar tidak melebihi layar HP */
+  #photoStripCanvas, .photostrip-preview {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+/* Pengaturan khusus hasil photostrip agar rapi di HP */
+.photostrip-result-container {
+  width: 90% !important;  /* Beri jarak sedikit di kiri-kanan (5%) */
+  max-width: 320px;       /* Batasi lebar maksimum agar tidak selayar penuh di HP */
+  margin: 20px auto;       /* Beri jarak atas-bawah dan posisikan ke tengah */
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5); /* Background tipis agar rapi */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+#photostripCanvas {
+  width: 100% !important;   /* Gambar mengikuti lebar container */
+  max-width: 100%;
+  height: auto !important;  /* Menjaga proporsi foto */
+  border-radius: 5px;       /* Sedikit rounded agar estetik */
+  display: block;           /* Hilangkan spasi di bawah gambar */
+}
+
+/* Perkecil jarak/padding di bagian-bagian lain di HP */
+body {
+  padding: 15px;
 }

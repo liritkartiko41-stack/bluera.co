@@ -74,15 +74,15 @@
             <div id="frameSelectionStep" class="photobox-wrapper fade-in">
                 <p>Pilih template bingkai photostrip kamu terlebih dahulu:</p>
                 <div class="template-options">
-                    <div class="template-card active" data-frame="frame1.png.png">
+                    <div class="template-card active" data-frame="strip1.png.png">
                         <img src="strip1.png.png" alt="Frame 1" class="frame-thumb">
                         <p>Frame 1</p>
                     </div>
-                    <div class="template-card" data-frame="frame2.png.png">
+                    <div class="template-card" data-frame="strips2.png.png">
                         <img src="strips2.png.png" alt="Frame 2" class="frame-thumb">
                         <p>Frame 2</p>
                     </div>
-                    <div class="template-card" data-frame="frame3.png.png">
+                    <div class="template-card" data-frame="strip3.png.png">
                         <img src="strip3.png.png" alt="Frame 3" class="frame-thumb">
                         <p>Frame 3</p>
                     </div>
@@ -116,58 +116,13 @@
                     <button id="resetAllBtn" class="glow-btn secondary-btn">Foto Ulang Dari Awal</button>
                     <button id="downloadBtn" class="glow-btn">Simpan Photostrip</button>
                 </div>
-                <!-- INTERAKSI GELAS KACA ISI SURAT -->
-<div class="jar-section" style="margin-top: 35px; text-align: center;">
-    <h3 style="color: #432f2e; margin-bottom: 8px;">Gelas Pesan & Inspirasi SGARA</h3>
-    <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">Klik gelas atau ambil salah satu gulungan surat di dalamnya!</p>
-    
-    <!-- Toples/Gelas Kaca -->
-    <div class="glass-jar" id="glassJar" onclick="openRandomLetter()">
-        <div class="jar-lid"></div>
-        <div class="jar-body">
-            <!-- 10 Gulungan Surat di Dalam Gelas -->
-            <span class="paper-scroll s1" onclick="openLetter(event, 0)">📜</span>
-            <span class="paper-scroll s2" onclick="openLetter(event, 1)">📜</span>
-            <span class="paper-scroll s3" onclick="openLetter(event, 2)">📜</span>
-            <span class="paper-scroll s4" onclick="openLetter(event, 3)">📜</span>
-            <span class="paper-scroll s5" onclick="openLetter(event, 4)">📜</span>
-            <span class="paper-scroll s6" onclick="openLetter(event, 5)">📜</span>
-            <span class="paper-scroll s7" onclick="openLetter(event, 6)">📜</span>
-            <span class="paper-scroll s8" onclick="openLetter(event, 7)">📜</span>
-            <span class="paper-scroll s9" onclick="openLetter(event, 8)">📜</span>
-            <span class="paper-scroll s10" onclick="openLetter(event, 9)">📜</span>
-            <span class="paper-scroll s11" onclick="openLetter(event, 10)">📜</span>
-<span class="paper-scroll s12" onclick="openLetter(event, 11)">📜</span>
-<span class="paper-scroll s13" onclick="openLetter(event, 12)">📜</span>
-<span class="paper-scroll s14" onclick="openLetter(event, 13)">📜</span>
-<span class="paper-scroll s15" onclick="openLetter(event, 14)">📜</span>
-<span class="paper-scroll s16" onclick="openLetter(event, 15)">📜</span>
-<span class="paper-scroll s17" onclick="openLetter(event, 16)">📜</span>
-<span class="paper-scroll s18" onclick="openLetter(event, 17)">📜</span>
-<span class="paper-scroll s19" onclick="openLetter(event, 18)">📜</span>
-<span class="paper-scroll s20" onclick="openLetter(event, 19)">📜</span>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Popup Tampilan Surat Dibuka -->
-<div id="letterModal" class="letter-modal" onclick="closeLetter()">
-    <div class="letter-content" onclick="event.stopPropagation()">
-        <span class="close-btn" onclick="closeLetter()">&times;</span>
-        <div class="letter-icon">💌</div>
-        <h4 id="letterTitle">Pesan SGARA Untukmu</h4>
-        <p id="letterText">Isi pesan akan muncul di sini...</p>
-        <button class="glow-btn" onclick="closeLetter()" style="margin-top: 15px; padding: 8px 20px;">Tutup Surat</button>
-    </div>
-</div>
-            </div>
-
+                </div>
             <canvas id="tempCanvas" style="display:none;"></canvas>
         </section>
     </main>
 
     <footer class="fade-in">
-        <p>Dibuat dengan ❤️ untuk Edukasi Teh Daun Telang & Photobox Aesthetic</p>
+        <p>Dibuat dengan ❤️ BLUERA, jangan lupa tersenyum hari ini</p>
     </footer>
 
     <script src="script.js"></script>
