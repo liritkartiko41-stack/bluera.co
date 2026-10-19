@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keajaiban Teh Daun Telang & Photobox Aesthetic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Titan+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <header class="hero fade-in">
+        <h1 class="title-text">BLUERA</h1>
+        <p class="subtitle">Taste the Blue, Feel the Flow</p>
+    </header>
+
+    <main>
+<!-- Wrapper untuk menampung 3 Kotak -->
+<div class="cards-container">
+
+  <!-- KOTAK 1: Manfaat Bunga Telang -->
+  <section class="glass-card product-card fade-in">
+    <h2>Manfaat Bunga Telang</h2>
+    <div class="card-body">
+      <img src="bungatelang.png.jpeg" alt="Bunga Telang" class="card-img">
+      <ul class="khasiat-list">
+        <li><strong>Kaya Antioksidan:</strong> Mengandung senyawa antosianin alami yang berkhasiat menangkal radikal bebas serta meningkatkan daya tahan tubuh secara optimal.</li>
+        <li><strong>Kesehatan Otak:</strong> Membantu memperkuat daya ingat, merangsang fungsi kognitif, dan menjaga konsentrasi saat beraktivitas harian.</li>
+        <li><strong>Relaksasi:</strong>Memberikan sensasi menenangkan pada pikiran untuk meredakan stres, kecemasan, serta mendukung kualitas tidur.</li>
+        <li><strong>Kulit & Rambut:</strong> Merangsang produksi kolagen alami untuk menjaga elastisitas kulit dan memperkuat akar rambut.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- KOTAK 2: Telarae (Minuman) -->
+  <section class="glass-card product-card fade-in">
+    <h2>Telarae</h2>
+    <div class="card-body">
+      <img src="telarae.png.jpeg" alt="Minuman Telarae" class="card-img">
+      <p class="card-desc">Minuman kesegaran alami yang terbuat dari ekstrak bunga telang pilihan, dipadukan secara sempurna dengan sensasi asam segar perasan lemon serta kebaikan biji selasih yang kaya nutrisi.</p>
+      <ul class="khasiat-list">
+        <li><strong>Kesegaran Alami:</strong> Perpaduan asam manis dan dingin yang pas, sangat cocok dinikmati untuk mengembalikan stamina dan kesegaran tubuh harian.</li>
+        <li><strong>Kaya Vitamin C & Antioksidan:</strong> Perasan lemon alami membantu memenuhi kebutuhan harian Vitamin C untuk meningkatkan sistem imunitas tubuh.</li>
+         <li><strong>Pencernaan Sehat:</strong> Tambahan biji selasih melancarkan sistem pencernaan sekaligus memberikan sensasi tekstur yang unik di setiap tegukan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- KOTAK 3: Flore Crisps (Keripik) -->
+  <section class="glass-card product-card fade-in">
+    <h2>Flore Crisps</h2>
+    <div class="card-body">
+      <!-- Ganti nama file gambar dengan gambar keripikmu jika ada -->
+      <img src="florecrips.png.jpeg" alt="Flore Crisps" class="card-img">
+      <p class="card-desc">flore Crisps merupakan inovasi camilan keripik sehat nan renyah yang diolah secara higienis menggunakan bahan-bahan berkualitas tinggi serta dipadukan dengan kebaikan ekstrak Bunga Telang alami. Dibuat tanpa menambahkan bahan pengawet sintetis maupun pewarna buatan, keripik ini tidak hanya menyajikan perpaduan rasa gurih dan renyah yang menggugah selera, tetapi juga kaya akan kandungan gizi serta antioksidan alami yang siap menjadi teman setia saat bersantai atau beraktivitas harian Anda.Keripik renyah bertabur ekstrak Bunga Telang alami dengan 3 varian rasa favorit:</p>
+      <div class="flavor-badges">
+        <span class="badge">Original</span>
+        <span class="badge">Keju</span>
+        <span class="badge">Balado</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+        <!-- Section Photobox Multi-Pose -->
+        <section id="photobox" class="glass-card card-photostrip fade-in">
+            <h2 class="fade-in">Abadikan momenmu dengan BLUERA</h2>
+            
+            <!-- TAHAP 1: PILIH TEMPLATE FRAME CANVA -->
+            <div id="frameSelectionStep" class="photobox-wrapper fade-in">
+                <p>Pilih template bingkai photostrip kamu terlebih dahulu:</p>
+                <div class="template-options">
+                    <div class="template-card active" data-frame="frame1.png.png">
+                        <img src="strip1.png.png" alt="Frame 1" class="frame-thumb">
+                        <p>Frame 1</p>
+                    </div>
+                    <div class="template-card" data-frame="frame2.png.png">
+                        <img src="strips2.png.png" alt="Frame 2" class="frame-thumb">
+                        <p>Frame 2</p>
+                    </div>
+                    <div class="template-card" data-frame="frame3.png.png">
+                        <img src="strip3.png.png" alt="Frame 3" class="frame-thumb">
+                        <p>Frame 3</p>
+                    </div>
+                </div>
+                <button id="startCameraBtn" class="glow-btn" style="margin-top: 15px;">Mulai Sesi Foto</button>
+            </div>
+
+            <!-- TAHAP 2: KAMERA & TAKE 3 FOTO -->
+            <div id="cameraStep" class="photobox-wrapper" style="display: none;">
+                <p id="photoInstruction">Foto ke-1 dari 3: Bersiaplah!</p>
+                
+                <div class="camera-container">
+                    <video id="webcam" autoplay playsinline></video>
+                    <img id="photoPreview" alt="Hasil Foto" style="display: none; position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; z-index: 3;">
+                </div>
+                
+                <div class="controls">
+                    <button id="snapBtn" class="glow-btn">Take Photo</button>
+                    <button id="retakeBtn" class="glow-btn" style="display:none;">Retake Foto Ini</button>
+                    <button id="nextBtn" class="glow-btn" style="display:none;">Lanjut Foto Berikutnya</button>
+                </div>
+            </div>
+
+            <!-- TAHAP 3: HASIL PHOTOSTRIP -->
+            <div id="resultStep" class="photobox-wrapper" style="display: none;">
+                <p>Hasil Photostrip 3 Pose Kamu!</p>
+                <div class="photostrip-result-container">
+                    <canvas id="photostripCanvas"></canvas>
+                </div>
+                <div class="controls" style="margin-top: 15px;">
+                    <button id="resetAllBtn" class="glow-btn secondary-btn">Foto Ulang Dari Awal</button>
+                    <button id="downloadBtn" class="glow-btn">Simpan Photostrip</button>
+                </div>
+                <!-- INTERAKSI GELAS KACA ISI SURAT -->
+<div class="jar-section" style="margin-top: 35px; text-align: center;">
+    <h3 style="color: #432f2e; margin-bottom: 8px;">Gelas Pesan & Inspirasi SGARA</h3>
+    <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">Klik gelas atau ambil salah satu gulungan surat di dalamnya!</p>
+    
+    <!-- Toples/Gelas Kaca -->
+    <div class="glass-jar" id="glassJar" onclick="openRandomLetter()">
+        <div class="jar-lid"></div>
+        <div class="jar-body">
+            <!-- 10 Gulungan Surat di Dalam Gelas -->
+            <span class="paper-scroll s1" onclick="openLetter(event, 0)">📜</span>
+            <span class="paper-scroll s2" onclick="openLetter(event, 1)">📜</span>
+            <span class="paper-scroll s3" onclick="openLetter(event, 2)">📜</span>
+            <span class="paper-scroll s4" onclick="openLetter(event, 3)">📜</span>
+            <span class="paper-scroll s5" onclick="openLetter(event, 4)">📜</span>
+            <span class="paper-scroll s6" onclick="openLetter(event, 5)">📜</span>
+            <span class="paper-scroll s7" onclick="openLetter(event, 6)">📜</span>
+            <span class="paper-scroll s8" onclick="openLetter(event, 7)">📜</span>
+            <span class="paper-scroll s9" onclick="openLetter(event, 8)">📜</span>
+            <span class="paper-scroll s10" onclick="openLetter(event, 9)">📜</span>
+            <span class="paper-scroll s11" onclick="openLetter(event, 10)">📜</span>
+<span class="paper-scroll s12" onclick="openLetter(event, 11)">📜</span>
+<span class="paper-scroll s13" onclick="openLetter(event, 12)">📜</span>
+<span class="paper-scroll s14" onclick="openLetter(event, 13)">📜</span>
+<span class="paper-scroll s15" onclick="openLetter(event, 14)">📜</span>
+<span class="paper-scroll s16" onclick="openLetter(event, 15)">📜</span>
+<span class="paper-scroll s17" onclick="openLetter(event, 16)">📜</span>
+<span class="paper-scroll s18" onclick="openLetter(event, 17)">📜</span>
+<span class="paper-scroll s19" onclick="openLetter(event, 18)">📜</span>
+<span class="paper-scroll s20" onclick="openLetter(event, 19)">📜</span>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Popup Tampilan Surat Dibuka -->
+<div id="letterModal" class="letter-modal" onclick="closeLetter()">
+    <div class="letter-content" onclick="event.stopPropagation()">
+        <span class="close-btn" onclick="closeLetter()">&times;</span>
+        <div class="letter-icon">💌</div>
+        <h4 id="letterTitle">Pesan SGARA Untukmu</h4>
+        <p id="letterText">Isi pesan akan muncul di sini...</p>
+        <button class="glow-btn" onclick="closeLetter()" style="margin-top: 15px; padding: 8px 20px;">Tutup Surat</button>
+    </div>
+</div>
+            </div>
+
+            <canvas id="tempCanvas" style="display:none;"></canvas>
+        </section>
+    </main>
+
+    <footer class="fade-in">
+        <p>Dibuat dengan ❤️ untuk Edukasi Teh Daun Telang & Photobox Aesthetic</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Quicksand:wght@500;600;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 600;
+    color: #432f2e;
+    overflow-x: hidden;
+}
+
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- HEADER / HERO SECTION --- */
+.hero {
+    text-align: center;
+    padding: 30px 20px 10px;
+}
+
+h1, .title-text {
+    font-family: 'Cherry Swash', cursive !important;
+    font-size: 3rem;
+    color: #432f2e;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    font-family: 'Quicksand', sans-serif;
+    color: #432f2e;
+    font-size: 0.95rem;
+    margin-top: 0;
+}
+
+/* --- JUDUL DALAM KOTAK --- */
+h2, .section-dark-purple h2, #photobox h2 {
+    font-family: 'Cherry Swash', cursive !important;
+    color: #feefb8 !important;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* --- KOTAK UTAMA (CHOCOPIE BROWN) --- */
+.glass-card, .section-dark-purple, #photobox {
+    background-color: #432f2e !important;
+    color: #feefb8;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(67, 47, 46, 0.15);
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 35px 40px;
+}
+
+/* --- KONTEN KHASIAT (TEH DI SAMPING TEKS) --- */
+.khasiat-content {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 30px;
+    flex-wrap: nowrap;
+}
+
+.interactive-spin-container {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spin-image, .interactive-spin-container img {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+}
+
+.khasiat-content ul {
+    padding-left: 20px;
+    line-height: 1.8;
+    max-width: 520px;
+    color: #432f2e;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.khasiat-content li strong {
+    color: #432f2e !important;
+    font-weight: 700;
+}
+
+/* --- SEKSI PHOTOBOX & TEMPLATE --- */
+.photobox-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.template-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.template-card {
+    background-color: transparent !important;
+    border: 2px solid #feefb8;
+    border-radius: 14px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 110px;
+}
+
+.template-card:hover, .template-card.active {
+    border-color: #ffffff;
+    background-color: rgba(254, 239, 184, 0.1) !important;
+    transform: translateY(-3px);
+}
+
+.frame-thumb {
+    width: 100%;
+    height: 135px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.template-card p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 6px 0 0;
+    color: #feefb8 !important;
+}
+
+/* --- TOMBOL MULAI SESI FOTO --- */
+.btn-primary, button#startCameraBtn, .start-btn {
+    background-color: #feefb8 !important;
+    color: #432f2e !important;
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 700;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-top: 15px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover, button#startCameraBtn:hover {
+    background-color: #ffffff !important;
+    transform: scale(1.04);
+}
+
+/* --- FOOTER --- */
+footer, .footer-text {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #432f2e;
+    margin: 30px 0 20px;
+}
+/* --- CAMERA & PREVIEW SECTION --- */
+/* --- CAMERA CONTAINER (DIBESARKAN & RESPONSIF) --- */
+.camera-container {
+    position: relative;
+    width: 95%;
+    max-width: 500px; /* Diperbesar dari 340px ke 500px agar lebih lega */
+    aspect-ratio: 4 / 3; /* Menjaga rasio presisi slot photostrip */
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 4px solid #feefb8;
+    background-color: #432f2e;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.camera-container video, 
+#webcam, 
+#canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+}
+
+/* Penyesuaian otomatis di layar HP */
+@media (max-width: 480px) {
+    .camera-container {
+        width: 90%;
+        max-width: 340px;
+    }
+}
+
+/* Status Countdown/Timer di Atas Kamera */
+.camera-status, #statusText, .countdown-overlay {
+    background-color: #432f2e !important;
+    color: #feefb8 !important;
+    font-family: 'Fredoka', sans-serif !important;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* --- TOMBOL AKSI & SESI FOTO --- */
+.action-buttons, .controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button, .btn-primary, #snapBtn, #retakeBtn {
+    background-color: #feefb8 !important;
+    color: #432f2e !important;
+    font-family: 'Fredoka', sans-serif !important;
+    font-weight: 700;
+    border: 2px solid #432f2e;
+    padding: 12px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:hover, .btn-primary:hover, #snapBtn:hover, #retakeBtn:hover {
+    background-color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+/* Mengubah warna latar khusus kotak Khasiat & Manfaat */
+.card-khasiat {
+    background-color: #c4dae8 !important; /* Ganti kode #3b232e ini sesuai warna yang kamu mau */
+}
+/* Warna judul khusus di KOTAK BIRU (Khasiat & Manfaat) */
+.card-khasiat h2 {
+    color: #432f2e !important; /* Ganti kode #1e3a8a ini sesuai warna yang kamu mau */
+}
+
+/* Warna judul khusus di KOTAK COKLAT (Abadikan momenmu...) */
+#photostrip h2, 
+.section-dark-purple h2:not(.card-khasiat h2) {
+    color: #feefb8 !important; /* Tetap warna krem/kuning semula */
+}
+/* --- ANIMASI SLIDE-UP HALUS & PADAT (TANPA TRANSPARAN BERLEBIHAN) --- */
+@keyframes simpleSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Memasang animasi langsung saat halaman dibuka / direfresh */
+.card-khasiat, 
+.card-photostrip,
+#photobox {
+    opacity: 1 !important; /* Memastikan kotak tetap pekat dan jelas */
+    animation: simpleSlideUp 0.8s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+/* Jeda halus berurutan */
+.card-khasiat {
+    animation-delay: 0.1s;
+}
+
+.card-photostrip,
+#photobox {
+    animation-delay: 0.3s;
+}
+/* --- AESTHETIC GLASS JAR & LETTER MODAL --- */
+.glass-jar {
+    width: 200px;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.glass-jar:hover {
+    transform: scale(1.05);
+}
+
+.jar-lid {
+    width: 130px;
+    height: 24px;
+    background: #432f2e;
+    margin: 0 auto;
+    border-radius: 6px 6px 0 0;
+}
+
+.jar-body {
+    width: 180px;
+    height: 210px;
+    background: rgba(254, 239, 184, 0.35);
+    border: 4px solid rgba(67, 47, 46, 0.8);
+    border-radius: 20px 20px 45px 45px;
+    margin: 0 auto;
+    backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6), 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Posisi 10 Surat Acak di Dalam Gelas */
+.paper-scroll {
+    position: absolute;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    user-select: none;
+}
+
+.paper-scroll:hover {
+    transform: scale(1.4) rotate(10deg);
+    filter: drop-shadow(0 0 5px #feefb8);
+}
+
+.s1  { bottom: 10px; left: 15px; transform: rotate(-15deg); }
+.s2  { bottom: 12px; left: 50px; transform: rotate(25deg); }
+.s3  { bottom: 10px; right: 15px; transform: rotate(-30deg); }
+.s4  { bottom: 45px; left: 25px; transform: rotate(40deg); }
+.s5  { bottom: 42px; right: 25px; transform: rotate(-10deg); }
+.s6  { bottom: 40px; left: 55px; transform: rotate(15deg); }
+.s7  { bottom: 75px; left: 20px; transform: rotate(-45deg); }
+.s8  { bottom: 78px; right: 20px; transform: rotate(35deg); }
+.s9  { bottom: 75px; left: 50px; transform: rotate(-5deg); }
+.s10 { bottom: 105px; left: 45px; transform: rotate(20deg); }
+.s11 { bottom: 35px; left: 25px; transform: rotate(18deg); }
+.s12 { bottom: 75px; left: 110px; transform: rotate(-22deg); }
+.s13 { bottom: 115px; left: 45px; transform: rotate(35deg); }
+.s14 { bottom: 135px; left: 105px; transform: rotate(-10deg); }
+.s15 { bottom: 155px; left: 20px; transform: rotate(25deg); }
+.s16 { bottom: 25px; left: 125px; transform: rotate(-40deg); }
+.s17 { bottom: 95px; left: 80px; transform: rotate(15deg); }
+.s18 { bottom: 145px; left: 70px; transform: rotate(-30deg); }
+.s19 { bottom: 50px; left: 95px; transform: rotate(45deg); }
+.s20 { bottom: 120px; left: 130px; transform: rotate(-18deg); }
+/* Buat area gelas sebagai patokan posisi */
+.jar-section {
+    position: relative; 
+}
+
+/* Modal popup muncul relatif di atas gelas & scroll otomatis ke tempatnya */
+.letter-modal {
+    display: none;
+    position: absolute;
+    bottom: 180px; /* Muncul pas di atas gelas */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.letter-content {
+    background: #feefb8;
+    color: #432f2e;
+    padding: 20px 18px;
+    border-radius: 16px;
+    border: 3px solid #432f2e;
+    max-width: 300px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: popupAnimation 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.letter-icon { font-size: 2.5rem; margin-bottom: 5px; }
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes popupAnimation {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+/* Container Utama untuk 3 Kotak */
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px; /* Jarak antar kotak */
+  max-width: 1200px; /* Diperlebar agar muat 3 kotak */
+  margin: 30px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Styling untuk Setiap Kotak (Glass Card) */
+.product-card {
+  flex: 1; /* Membuat ketiga kotak memiliki lebar seimbang */
+  min-width: 280px;
+  margin: 0 !important; /* Reset margin auto bawaan .glass-card sebelumnya */
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Isi di dalam Kotak */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card-img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Badge Varian Rasa untuk Flore Crisps */
+.flavor-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.badge {
+  background-color: rgb(125, 94, 70);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Penyesuaian Tampilan untuk Layar HP / Mobile */
+@media (max-width: 900px) {
+  .cards-container {
+    flex-direction: column; /* Berubah jadi menumpuk ke bawah di layar kecil */
+    align-items: center;
+  }
+  
+  .product-card {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+/* Mengatur isi teks, paragraf, dan daftar bullet agar rata kiri */
+.product-card .card-body p,
+.product-card .card-body ul,
+.product-card .card-body li {
+  text-align: left;
+  width: 100%; /* Memastikan elemen mengambil lebar penuh agar rata kiri terlihat sempurna */
+}
+
+/* Mengatur bullet list agar titiknya ada di dalam dan rapi */
+.product-card .khasiat-list {
+  padding-left: 20px; /* Jarak untuk titik bullet */
+  margin: 10px 0;
+}
+/* Mengatur semua deskripsi di dalam kotak agar rata kanan-kiri */
+.product-card .card-desc {
+  text-align: justify;
+  text-justify: inter-word; /* Memastikan jarak antar kata terbagi rapi */
+  line-height: 1.6;        /* Memberi jarak antar baris agar nyaman dibaca */
+  width: 100%;
+}
